@@ -1,0 +1,20 @@
+.container-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+}
+
+.content-layout-active {
+  width: 100%;
+  background-color: #ffff;
+  margin: 5px;
+}
+
+.content-layout-inactive {
+  width: calc(100% - 250px);
+  background-color: #ffff;
+  margin: 5px;
+}

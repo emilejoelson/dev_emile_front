@@ -1,0 +1,105 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1em;
+
+  margin-top: -80px;
+  padding-top: 40px;
+}
+
+.about-desc {
+  width: 70%;
+  padding: 1.1em;
+  font-size: 25px;
+  text-align: center;
+}
+
+.about-desc p {
+  font-size: 22px;
+  font-weight: 400;
+  color: grey;
+}
+
+.about-desc h1 {
+  padding-bottom: 0.8em;
+}
+
+.about-title {
+  font-weight: 900;
+  background: linear-gradient(45deg, #7f00ff, pink);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.missions {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.mission {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mission-title {
+  text-align: center;
+  padding-bottom: 0.8em;
+  font-size: 24px;
+  font-weight: 400;
+  background: linear-gradient(45deg, #7f00ff, pink);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mission-desc {
+  font-size: 18px;
+}
+
+.mission-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-image img {
+  max-width: 80%;
+  height: auto;
+}
+
+@media only screen and (max-width: 990px) {
+  .about-desc {
+    padding-top: 3em;
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .mission-desc {
+    font-size: 20px;
+  }
+
+  .mission-image img {
+    max-width: 100%;
+  }
+
+  .mission {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .mission-text {
+    order: 1;
+  }
+
+  .mission-image.left {
+    order: 0;
+  }
+}

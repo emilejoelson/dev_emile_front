@@ -1,0 +1,86 @@
+<nav
+  class="bg-purple-500 border-gray-200 dark:border-gray-400 dark:bg-purple-600 fixed w-full z-20 top-0 start-0 px-2">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+    <a href
+      class="flex items-center  rtl:space-x-reverse font-bold text-white ">
+      <img src="assets/images/logo/norsifyLogo.png" alt="Logo"
+        class="h-16 border-gray-400 rounded-full p-1 ">
+      <p class="py-2">Norsify</p>
+    </a>
+
+    <div class="flex space-x-3">
+      <button type="button"
+        class="md:hidden text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 py-2"
+        (click)="toggleMobileMenu()">
+        <svg class="w-5 h-5" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      class="hidden md:flex justify-between md:items-center md:w-auto md:order-1"
+      id="navbar-sticky">
+      <ul class="flex flex-col md:flex-row md:space-x-8">
+        <div class="flex">
+          <li>
+            <a href
+              class=" block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Home</a>
+          </li>
+          <li>
+            <a href
+              class=" block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Stores</a>
+          </li>
+        </div>
+        <div class="flex">
+          <li>
+            <a href="/login"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Login</a>
+          </li>
+          <li>
+            <a href="/register"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Create
+              account</a>
+          </li>
+          <li>
+            <a href="/create-store"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-purple-800 dark:hover:bg-white dark:hover:text-purple-800 bg-white align-middle">Create
+              your store</a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by Default) -->
+  <div [class.hidden]="!isMobileMenuOpen"
+    class="md:hidden w-full p-6 rounded-sm">
+    <ul class="flex flex-col md:flex-row md:space-x-8">
+      <li>
+        <a href
+          class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Home</a>
+      </li>
+      <li>
+        <a href
+          class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Stores</a>
+      </li>
+      <li>
+        <a href="/login"
+          class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Login</a>
+      </li>
+      <li>
+        <a href="/register"
+          class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-white dark:hover:text-purple-800">Create
+          account</a>
+      </li>
+      <li>
+        <a href="create-store"
+          class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-purple-800 dark:hover:bg-white dark:hover:text-purple-800 bg-white align-middle">Create
+          your store</a>
+      </li>
+    </ul>
+  </div>
+</nav>

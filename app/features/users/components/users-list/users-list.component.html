@@ -1,0 +1,97 @@
+<div class="stores-container">
+    <div class="stores-title">
+        <h2>All available customers</h2>
+    </div>
+    <div class="table-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <label for="firstName" class="input-label">First
+                            name</label>
+                        <input class="custom-input"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="first name"
+                            (ngModelChange)="onSearchChange()"
+                            [ngModel]="firstName()"
+                            (keyup)="firstName.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="lastName" class="input-label">Last
+                            name</label>
+                        <input class="custom-input"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Last name"
+                            (ngModelChange)="onSearchChange()"
+                            [ngModel]="lastName()"
+                            (keyup)="lastName.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="email" class="input-label">Email</label>
+                        <input class="custom-input"
+                            id="email"
+                            name="email"
+                            placeholder="user email"
+                            (ngModelChange)="onSearchChange()"
+                            [ngModel]="email()"
+                            (keyup)="email.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="role" class="input-label">Role</label>
+                        <select id="role" name="role" class="custom-input"
+                            [ngModel]="role()"
+                            (ngModelChange)="onRoleChange($event)">
+                            <option value="['USER','OWNER_SHOP']">All</option>
+                            <option value="['USER']">Client</option>
+                            <option value="['OWNER_SHOP']">Owner shop</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="status" class="input-label">Status</label>
+                        <select id="status" name="status" class="custom-input"
+                            [ngModel]="status()"
+                            (ngModelChange)="onStatusChange($event)">
+                            <option value>All</option>
+                            <option value="true">Enabled</option>
+                            <option value="false">Disabled</option>
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of content">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles | roleDisplayName }}</td>
+                    <td>
+                        <div class="status-container">
+                            <div
+                                [ngClass]="{ 'status-enable': user.enabled , 'status-disable': !user.enabled }">
+                            </div>
+                        </div>
+                    </td>
+                    <div class="action-container"
+                        (click)="openMessageConfirmation(user.id)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+        <app-pagination
+            [totalCount]="totalElements"
+            [index]="numberOfPage"
+            [maxPages]="totalPages"
+            [first]="first"
+            [last]="last"
+            (page)="nextPage($event)"
+            (recordsPerPage)="recordsPerPage($event)"></app-pagination>
+    </div>
+    <app-message-confirmation-popup
+        [showModal]="showConfirmationPopup"
+        (acceptClicked)="onAccept()"
+        (cancelClicked)="onCancel()">
+    </app-message-confirmation-popup>
+</div>

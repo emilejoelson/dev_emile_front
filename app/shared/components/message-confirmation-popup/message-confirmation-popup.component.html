@@ -1,0 +1,16 @@
+<div id="popup" class="popup" *ngIf="showModal">
+    <div class="popup-content">
+        <span class="close" (click)="cancel()">&times;</span>
+        <h2>Confirmation</h2>
+        <p>Are you sure you want to delete this user ?</p>
+        <div class="message">
+            <textarea
+                placeholder="Enter the reason why you want to delete this user?"></textarea>
+        </div>
+        <div class="btns-container">
+            <button type="submit" class="accept-btn"
+                (click)="accept()">Send</button>
+            <button class="close-btn" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

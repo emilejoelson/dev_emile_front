@@ -1,0 +1,11 @@
+<div class="section" [ngClass]="{'active': showModal}">
+  <div class="modal-box">
+    <i class="fa-regular fa-circle-check"></i>
+    <h2>{{ message }}</h2>
+    <h3>{{ description }}</h3>
+    <div class="buttons">
+      <button class="accept-btn" (click)="accept()">Accept</button>
+      <button class="close-btn" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

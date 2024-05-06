@@ -1,0 +1,13 @@
+.p-message {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--error);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fdd;
+  color: var(--error);
+  font-family: Arial, sans-serif;
+  width: fit-content;
+  gap: .5em;
+  margin: 20px;
+}

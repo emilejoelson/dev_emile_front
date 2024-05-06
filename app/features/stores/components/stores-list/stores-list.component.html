@@ -1,0 +1,88 @@
+<div class="stores-container">
+    <div class="stores-title">
+        <h2>All available stores</h2>
+    </div>
+    <div class="table-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <label for="name" class="input-label">Name</label>
+                        <input class="custom-input"
+                            id="name"
+                            name="name"
+                            placeholder="Store name"
+                            (ngModelChange)="onSearchChange()"
+                            [ngModel]="name()"
+                            (keyup)="name.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="email" class="input-label">Email</label>
+                        <input class="custom-input"
+                            id="email"
+                            name="email"
+                            placeholder="Store email"
+                            (ngModelChange)="onSearchChange()"
+                            [ngModel]="email()"
+                            (keyup)="email.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="Category"
+                            class="input-label">Category</label>
+                        <input class="custom-input"
+                            placeholder="Store category"
+                            (ngModelChange)="onSearchChange()"
+                            id="Category"
+                            name="Category"
+                            [ngModel]="category()"
+                            (keyup)="category.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="Location"
+                            class="input-label">Location</label>
+                        <input class="custom-input"
+                            placeholder="Store location"
+                            (ngModelChange)="onSearchChange()"
+                            id="Location"
+                            name="Location"
+                            [ngModel]="location()"
+                            (keyup)="location.set($any($event.target).value)">
+                    </th>
+                    <th>
+                        <label for="status" class="input-label">Status</label>
+                        <select id="status" name="status" class="custom-input"
+                            [ngModel]="status()"
+                            (ngModelChange)="onStatusChange($event)">
+                            <option value>All</option>
+                            <option value="true">Enabled</option>
+                            <option value="false">Disabled</option>
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let store of content">
+                    <td>{{ store.name }}</td>
+                    <td>{{ store.email }}</td>
+                    <td>{{ store.category }}</td>
+                    <td>{{ store.location }}</td>
+                    <td>
+                        <div class="status-container">
+                            <div
+                                [ngClass]="{ 'status-enable': store.enabled , 'status-disable': !store.enabled }">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-pagination
+            [totalCount]="totalElements"
+            [index]="numberOfPage"
+            [maxPages]="totalPages"
+            [first]="first"
+            [last]="last"
+            (page)="nextPage($event)"
+            (recordsPerPage)="recordsPerPage($event)"></app-pagination>
+    </div>
+</div>

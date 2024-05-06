@@ -1,0 +1,70 @@
+.table-footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.select-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.select-container label {
+  margin-right: 10px;
+}
+
+.select-container select {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.select-container select {
+  background-color: var(--dashpurple);
+  color: whitesmoke;
+  outline: none;
+}
+
+.pagination-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-container li {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.btn {
+  border-radius: 5px;
+  background-color: var(--dashpurple);
+  color: whitesmoke;
+}
+
+.pagination-number {
+  border-radius: 50%;
+}
+
+.pagination-container .active {
+  background-color: var(--dashpurple);
+  color: whitesmoke;
+}
+
+.pagination-number:hover {
+  background-color: rgb(193, 193, 193);
+  color: whitesmoke;
+}
+
+.select-container label,
+.records-container p {
+  font-weight: 500;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}

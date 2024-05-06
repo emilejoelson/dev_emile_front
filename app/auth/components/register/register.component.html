@@ -1,0 +1,89 @@
+<div class="flex justify-center items-center authentification-background background-overlay">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-lg">
+        <div class="max-w-md w-full p-8 bg-white rounded-lg container-shadow">
+            <h1 class="text-2xl font-semibold mb-2 text-center">Sign up</h1>
+            <form (ngSubmit)="onSubmit()" #signupForm="ngForm" class="py-10">
+                <div class="mb-4">
+                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name <span class="text-red-500 text-lg">*</span>
+                    </label>
+                    <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required
+                        class="mt-1 block w-full px-3 py-2 rounded-md border 
+                    border-gray-300 shadow-sm focus:outline-none 
+                    focus:border-purple-500 focus:ring focus:ring-purple-500 
+                    focus:ring-opacity-50">
+                    <div *ngIf="signupForm.controls['firstName']?.invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)"
+                        class="text-red-500 text-sm mt-1">First Name is required !</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name <span class="text-red-500 text-lg">*</span>
+                    </label>
+                    <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required
+                        class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+                    focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+
+                    <div *ngIf="signupForm.controls['lastName']?.dirty || signupForm.controls['lastName']?.touched">
+                        <div *ngIf="signupForm.controls['lastName'].invalid " class="text-red-500 text-sm mt-1">
+                            Last Name is required !</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">
+                      E-mail <span class="text-red-500 text-lg">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" [(ngModel)]="email" required
+                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                      title="Please enter a valid email address"
+                      #emailInput="ngModel"
+                      class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+                             focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                  
+                    <div *ngIf="emailInput.errors && emailInput.errors['required'] && (emailInput.dirty || emailInput.touched)"
+                      class="text-red-500 text-sm mt-1">E-mail is required!</div>
+                  
+                    <div *ngIf="emailInput.errors && emailInput.errors['pattern'] && !emailInput.errors['required'] && (emailInput.dirty || emailInput.touched)"
+                      class="text-red-500 text-sm mt-1">Please enter a valid e-mail!</div>
+                  </div>
+                  
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password <span class="text-red-500 text-lg">*</span>
+                    </label>
+                    <div class="relative">
+                        <input type="{{ passwordVisible ? 'text' : 'password' }}" id="password" name="password"
+                            [(ngModel)]="password" required minlength="8" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+                               focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                        <button type="button" class="absolute inset-y-0 right-0 px-3 py-2"
+                            (click)="togglePasswordVisibility()">
+                            <fa-icon [icon]="passwordVisible ? faEye : faEyeSlash"
+                                class="h-6 w-6 text-gray-500"></fa-icon>
+                        </button>
+                    </div>
+                    <div *ngIf="signupForm.controls['password']?.invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+                        class="text-red-500 text-sm mt-1">Password must be at least 8 characters long !
+                    </div>
+                </div>
+
+                <div *ngIf="errorMessage" class="bg-red-100 border border-red-400 text-red-500 px-4 py-3 rounded relative" role="alert">
+     
+                    <span class="block sm:inline">{{ errorMessage }}</span>
+                  </div>
+
+                <button type="submit" [disabled]="signupForm.invalid"
+                    class="w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    [ngClass]="{ 'bg-gray-300 cursor-not-allowed': signupForm.invalid, 'bg-purple-700 hover:bg-purple-900 text-white font-bold': !signupForm.invalid }">
+                    Sign Up
+                </button>
+
+                <div *ngIf="loading" class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div class="spinner border-t-4 border-gray-500 rounded-full animate-spin h-12 w-12"></div>
+                  </div>
+                  
+            </form>
+        </div>
+    </div>
+
+    <app-modal-box-auth [showModal]="showModal" [message]="message" [description]="description" (confirmClicked)="confirm()">
+    </app-modal-box-auth>
+
+</div>

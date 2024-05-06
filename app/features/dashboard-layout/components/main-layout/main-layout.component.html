@@ -1,0 +1,9 @@
+<div class="container-layout">
+  <app-header (statusEvent)="sideBarStatus($event)"></app-header>
+  <div class="main-content">
+    <app-side-bar [status]="status"></app-side-bar>
+    <div [ngClass]="status ? 'content-layout-active' : 'content-layout-inactive'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

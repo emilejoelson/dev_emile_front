@@ -1,0 +1,155 @@
+.stores-title h2{
+    padding: 2em 2em 1em;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.table-body {
+  width: 95%;
+  max-height: calc(89% - 1.6rem);
+  background-color: #fffb;
+
+  margin: 0.8rem auto;
+  border-radius: 0.6rem;
+
+  overflow: auto;
+  overflow: overlay;
+
+  padding: 1em;
+  box-shadow: 0px 0px 2px 0px #666;
+}
+
+.table-body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.table-body:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+table {
+  width: 100%;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr {
+  height: 3em;
+}
+
+@media (max-width: 1000px) {
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}
+
+.custom-input,
+.custom-select {
+  display: block;
+  margin: 0.4em 0;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.custom-select {
+  width: 100%;
+}
+
+.custom-input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25);
+}
+
+.input-label {
+  display: flex;
+  cursor: pointer;
+}
+
+input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #a2a3a4;
+}
+
+/* aactions */
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  margin-top: 0.8em;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.enabled {
+  background-color: green;
+  color: white;
+}
+
+button.disabled {
+  background-color: red;
+  color: white;
+}
+
+.red-icon {
+  margin-top: 0.9em;
+  color: red;
+}
+
+/* ---------- */
+.status-enable {
+  height: 16px;
+  width: 16px;
+  background-color: rgb(107, 252, 107);
+  border-radius: 50%;
+}
+
+.status-disable {
+  height: 16px;
+  width: 16px;
+  background-color: rgb(250, 124, 124);
+  border-radius: 50%;
+}
+
+.status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* sirection */
+span.icon-arrow{
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  color: #6c00bd;
+  border: 1.4px solid #6c00bd;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1rem;
+  margin-left: 1.5rem;
+}
+
+.action-container{
+  width: 40px;
+  margin-top: .7em;
+  color: red;
+  cursor: pointer;
+}

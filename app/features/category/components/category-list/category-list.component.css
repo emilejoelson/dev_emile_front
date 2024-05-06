@@ -1,0 +1,98 @@
+.categories {
+  margin: 20px;
+}
+
+.category-header {
+  margin-bottom: 10px;
+}
+
+.add-category-icon {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.add-category-icon:hover {
+  background-color: #0056b3;
+}
+
+.category-filters input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.category-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.category-list th,
+.category-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.category-list th {
+  background-color: #f2f2f2;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.pagination-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* Media Queries */
+
+/* For small devices (phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+  .add-category-icon {
+    width: 60px;
+  }
+}
+
+/* For medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .add-category-icon {
+    width: 70px;
+  }
+}
+
+/* For large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .add-category-icon {
+    width: 80px;
+  }
+}
+
+/* For extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .add-category-icon {
+    width: 90px;
+  }
+}

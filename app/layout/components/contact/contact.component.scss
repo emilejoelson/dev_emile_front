@@ -1,0 +1,99 @@
+
+.space{
+  margin-top: -80px; /* Ajustez la valeur en fonction de la hauteur de votre navbar */
+  padding-top: 40px;
+
+}
+.contact-in{
+  width: 80%;
+  height: 85vh;
+  margin: auto;
+  display: flex;
+  gap: 1.2em;
+  padding: 10px;
+  border-radius: 10px;
+  background: whitesmoke;
+  margin-top: 120px;
+  // box-shadow: 0px 0px 10px 0px #666;
+}
+
+.contact-map{
+  width: 100%;
+  height: auto;
+  flex: 50%;
+}
+
+.contact-map iframe{
+  width: 100%;
+  height: 100%;
+  padding: 1.2em;
+}
+
+.contact-form-container{
+  width: 100%;
+  height: auto;
+  flex: 50%;
+  padding: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form h1{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contact-from-txt{
+  width: 100%;
+  height: 40px;
+  color: #000;
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.contact-from-txt::placeholder{
+  color: #aaa;
+}
+
+.contact-from-txtArea{
+  width: 100%;
+  height: 130px;
+  color: #000;
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 20px;
+  padding: 15px;
+  resize: none;
+}
+
+.contact-from-txtArea::placeholder{
+  color: #aaa;
+}
+
+.contact-from-btn{
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: #8e2de8;
+  color: whitesmoke;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 990px) {
+  .contact-in{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 1.2em;
+   // padding-left: 65px;
+   // margin-bottom: 0px;
+  }
+}

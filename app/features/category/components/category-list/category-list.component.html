@@ -1,0 +1,61 @@
+<div class="categories">
+  <!-- Category List Header -->
+  <div class="category-header flex justify-between ml-10 mr-10">
+    <div class="font-bold font-arial-narrow text-lg">Category List</div>
+    <button class="add-category-icon font-arial-narrow" (click)="addNewCategory()">
+      <i class="fa-thin fa-plus"></i>
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="category-filters ml-10 mt-5">
+    <input type="text" placeholder="Type to filter" #filterInput>
+    <button (click)="addFilter('name', filterInput.value)">Filter</button>
+  </div>
+
+  <!-- Category List -->
+  <div class="category-list mt-5">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through categories -->
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td class="truncate max-w-xs">{{ category.description }}</td>
+          <td class="cursor-pointer">
+            <i
+              class="fa-solid"
+              [ngClass]="{ 'fa-toggle-on': category.status, 'fa-toggle-off': !category.status }"
+              (click)="toggleCategoryStatus(category)"
+            ></i>
+          </td>
+          <td>
+            <!-- Actions: Edit, View Details, Delete -->
+            <i class="far fa-eye text-blue-500 cursor-pointer" (click)="showCategoryDetails(category.id)"></i>
+            <i class="far fa-edit text-yellow-500 ml-3 cursor-pointer" (click)="editCategory(category)"></i>
+            <i class="far fa-trash-alt text-red-500 ml-3 cursor-pointer" (click)="deleteCategory(category.id)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination flex justify-center mt-5">
+    <button class="pagination-btn" (click)="prevPage()">Previous</button>
+    <span>{{ searchRequest.page + 1 }}</span>
+    <button class="pagination-btn" (click)="nextPage()">Next</button>
+  </div>
+
+  <!-- Total Records -->
+  <div>Total Records: {{ totalRecords }}</div>
+</div>

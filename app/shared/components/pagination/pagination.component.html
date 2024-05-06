@@ -1,0 +1,38 @@
+<div class="table-footer">
+    <div class="select-container">
+        <label for="recordsPerPage">Records per page:</label>
+        <select id="recordsPerPage" (change)="onChange($event)">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+    <div class="pagination-container">
+        <ol *ngIf="maxPages > 1" class="pagination-container">
+            <li *ngIf="!first" (click)="navigateToPage(1)" class="btn">
+                <i class="fa-solid fa-angles-left"></i>
+            </li>
+            <li *ngIf="!first" (click)="navigateToPage(index - 1)" class="btn">
+                <i class="fa-solid fa-angle-left"></i>
+            </li>
+            <li
+                *ngFor="let page of pagination.pages; trackBy: trackByFn"
+                class="pagination-number"
+                [class.active]="page === pagination.index"
+                (click)="navigateToPage(page)">
+                {{ page }}
+            </li>
+            <li *ngIf="!last" (click)="navigateToPage(index + 1)"
+                class="btn">
+                <i class="fa-solid fa-angle-right"></i>
+            </li>
+            <li *ngIf="!last" (click)="navigateToPage(maxPages)"
+                class="btn">
+                <i class="fa-solid fa-angles-right"></i>
+            </li>
+        </ol>
+    </div>
+    <div class="records-container">
+        <p>{{totalCount}} records</p>
+    </div>
+</div>

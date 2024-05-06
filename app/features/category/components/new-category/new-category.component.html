@@ -1,0 +1,72 @@
+<!-- new-category.component.html -->
+<div class="new-category p-10 ">
+  <div class="flex gap-10">
+    <a class="icon-left bg-gray-200 hover:bg-gray-300 cursor-pointer" (click)="returnToLogin()">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <div class="font-bold font-arial-narrow text-lg">Create new category</div>
+  </div>
+  <form id="categoryForm" class="grid-container" (submit)="addOrUpdateCategory()">
+    <div class="left-column rounded">
+      <div class="pl-15 mb-10 input-focus-border">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="font-arial-narrow focus:border-[#2c6ecb] focus:outline-none focus:ring-1 focus:ring-[#2c6ecb]"
+          id="name"
+          name="name"
+          placeholder="Write here the category name"
+          [(ngModel)]="newCategory.name"
+          spellcheck="false"
+        />
+      </div>
+      <div class="pl-15">
+        <label for="description">Description </label>
+        <textarea
+          class="font-arial-narrow focus:border-[#2c6ecb] focus:outline-none focus:ring-1 focus:ring-[#2c6ecb]"
+          id="description"
+          name="description"
+          placeholder="Write here  the category description"
+          [(ngModel)]="newCategory.description"
+          spellcheck="false"
+        ></textarea>
+      </div>
+    </div>
+    <div class="right-column rounded">
+      <h1 class="font-bold sm:font-arial-narrow focus:border-[#2c6ecb] focus:outline-none focus:ring-1 focus:ring-[#2c6ecb]">
+        Status
+      </h1>
+      <div class="status-toggle">
+        <div class="flex gap-10">
+          <input
+            type="radio"
+            id="enabled"
+            name="status"
+            [(ngModel)]="newCategory.status"
+            [value]="true"
+            checked
+            class="bg-blue-400"
+          />
+          <label class="font-arial-narrow" for="enabled">Enabled</label>
+        </div>
+        <div class="flex gap-10">
+          <input
+            type="radio"
+            id="disabled"
+            name="status"
+            [(ngModel)]="newCategory.status"
+            [value]="false"
+            class="bg-blue-400"
+          />
+          <label class="font-arial-narrow" for="disabled">Disabled</label>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      class="bg-[#9334ea] hover:bg-[#cb73c7]"
+      [value]="newCategory.id ? 'Update' : 'Ajouter'"
+    />
+  </form>
+</div>

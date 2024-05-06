@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.authentification-background {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./assets/images/backgroud//background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+:root {
+  --dark: #34495e;
+  --light: #ffffff;
+  --success: #0abf30;
+  --error: #e24d4c;
+  --warning: #e9bd0c;
+  --info: #3498db;
+
+  --dashpurple: #9333ea;
+  --dashwhite: #fff;
+  --dashgray: #f5f5f5;
+  --dashblack1: #222;
+  --dashblack2: #999;
+}
+
+.container-shadow {
+  box-shadow: 0px 0px 15px 0px #666;
+}

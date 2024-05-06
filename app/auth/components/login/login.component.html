@@ -1,0 +1,75 @@
+<div class="flex justify-center items-center authentification-background background-overlay ">
+  <div class="max-w-md w-full p-8 bg-white rounded-lg container-shadow ">
+    <div class="mb-4">
+      <img src="assets/images/logo/norsifyLogo.png" alt="Logo"
+        class="mx-auto w-40 h-40 border border-gray-400 rounded-[100px] p-1 animate-pulse">
+
+    </div>
+    <h1 class="text-2xl font-semibold mb-4 text-center">Login</h1>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+        <input type="email" id="email" name="email" [(ngModel)]="username" required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please enter a valid email address"
+          #emailInput="ngModel" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+    focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+        <div *ngIf="emailInput.errors?.['required'] && (emailInput.dirty || emailInput.touched)"
+          class="text-red-500 text-sm mt-1">E-mail is required</div>
+        <div
+          *ngIf="emailInput.errors?.['pattern'] && !emailInput.errors?.['required'] && (emailInput.dirty || emailInput.touched)"
+          class="text-red-500 text-sm mt-1">Please enter a valid email address</div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <div class="relative">
+          <input type="{{ passwordVisible ? 'text' : 'password' }}" id="password" name="password" [(ngModel)]="password"
+            required class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+                       focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+            autocomplete="on">
+          <button type="button" class="absolute inset-y-0 right-0 px-3 py-2" (click)="togglePasswordVisibility()">
+            <fa-icon [icon]="passwordVisible ? faEye : faEyeSlash" class="h-6 w-6 text-gray-500"></fa-icon>
+          </button>
+        </div>
+
+        <div *ngIf="loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched">
+          <div *ngIf="loginForm.controls['password']?.errors?.['required']" class="text-red-500 text-sm mt-1">Password
+            is required</div>
+        </div>
+
+      </div>
+      <div *ngIf="errorMessage" class="bg-red-100 border border-red-400 text-red-500 px-4 py-3 rounded relative"
+        role="alert">
+
+        <span class="block sm:inline">{{ errorMessage }}</span>
+      </div>
+
+      <div class="flex items-center m-3">
+        <input type="checkbox" id="rememberMe" name="rememberMe" class="mr-2">
+        <label for="rememberMe" class="text-sm text-gray-700">Remember Me</label>
+      </div>
+
+      <div class="text-center mb-6">
+        <a href="/resetPassword" class="text-sm text-purple-700 hover:underline">Forgot Password? Reset it here</a>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid"
+        class="w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        [ngClass]="{ 'bg-gray-300 cursor-not-allowed': loginForm.invalid, 'bg-purple-700 hover:bg-purple-900 text-white font-bold': !loginForm.invalid }">
+        Log In
+      </button>
+    </form>
+    <div class="text-center mt-7">
+      <p class="text-sm text-gray-700 pb-4">Don't have an account yet?</p>
+      <a href="/register" class="text-purple-700 hover:underline px-5">Create account</a>
+      <a href="/create-store" class="text-purple-700 hover:underline px-5">Create your store</a>
+    </div>
+  </div>
+
+  <div *ngIf="loading"
+    class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="spinner border-t-4 border-gray-500 rounded-full animate-spin h-12 w-12"></div>
+  </div>
+
+
+</div>

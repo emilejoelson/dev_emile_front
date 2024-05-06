@@ -1,0 +1,12 @@
+<!-- toast.component.html -->
+<li class="notifications toast" *ngFor="let toast of toasts"
+  [ngClass]="toast.type">
+  <div class="notifications column">
+    <i class="fa-solid" [class]="toast.icon"></i>
+    <div class="toast-title">
+      <span class="toast-status">{{ toast.type }}</span>
+      <span class="toast-text">{{ toast.text }}</span>
+    </div>
+  </div>
+  <i class="fa-solid fa-xmark pointer" (click)="closeToast(toast)"></i>
+</li>

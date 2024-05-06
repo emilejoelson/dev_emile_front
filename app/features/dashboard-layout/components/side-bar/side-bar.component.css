@@ -1,0 +1,139 @@
+.container {
+  height: 100vh;
+  position: relative;
+  box-shadow: 3px 0 3px -1px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.logo-active {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.navigation {
+  position: relative !important;
+  width: 250px;
+  height: 100%;
+  background: #f6f6f7;
+  transition: 0.3s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 70px;
+}
+
+.navigation ul {
+  top: 10px;
+  left: 0px;
+  width: 100%;
+}
+
+.navigation ul li {
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.navigation ul li:active,
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--dashpurple);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--dashpurple);
+  cursor: pointer;
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--dashwhite);
+}
+
+.navigation ul li a .icon {
+  display: block;
+
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--dashpurple);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--dashpurple);
+  pointer-events: none;
+}
+
+.nav {
+  left: 250px;
+  min-height: 100vh;
+  transition: 0.5s;
+}
+.nav.active {
+  left: 80px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.norsify-text {
+  font-weight: bold;
+  padding-top: 10px;
+  color: var(--dashpurple);
+}

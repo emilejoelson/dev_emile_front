@@ -1,0 +1,35 @@
+<header class="header ">
+    <div [ngClass]="status ? 'active' : ''" class="nav">
+        <div class="toggle" (click)="toggleSidebar()">
+            <i class="fa-solid fa-bars fa-lg"></i>
+        </div>
+    </div>
+    <div class="header-user">
+        <div class="action">
+            <div (click)="menuToggle()">
+                <button class="header-btn">
+                    <img src="assets/images/img/profil.png" alt="User Icon"
+                        class="header-user-icon">
+                </button>
+
+            </div>
+            <div class="menu">
+                <h3>{{firstName}}
+                    {{lastName}}<br /><span>{{email}}</span></h3>
+                <ul>
+                    <li>
+                        <div class="icon"><i
+                                class="fa-solid fa-user"></i></div><a
+                            href="#">My profile</a>
+                    </li>
+
+                    <li (click)="signOut()" >
+                        <div class="icon"> <i
+                                class="fa-solid fa-right-from-bracket"></i></div>
+                                <a>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

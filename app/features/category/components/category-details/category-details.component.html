@@ -1,0 +1,17 @@
+<div id="category-details" class="category-container" *ngIf="category">
+  <h2 class="category-title">Category Details</h2>
+  <div class="category-info">
+    <p><strong class="category-id">ID:</strong> {{ category.id }}</p>
+    <p><strong class="category-name">Name:</strong> {{ category.name }}</p>
+    <p><strong class="category-description">Description:</strong> {{ category.description }}</p>
+    <p><strong class="category-status">Status:</strong> {{ category.status ? 'Active' : 'Inactive' }}</p>
+  </div>
+</div>
+
+<div id="loading-container" class="loading-container" *ngIf="!category">
+      
+  
+  <p class="loading-text">Loading...</p>
+</div>
+
+<h6></h6>

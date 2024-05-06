@@ -1,0 +1,148 @@
+<div class="min-h-screen flex justify-center items-center authentification-background">
+  <div class="max-w-xl  p-8 bg-white rounded-lg container-shadow my-5">
+    <div class="flex justify-center mb-6">
+      <div class="w-60 h-4 rounded-full mx-2" [class.bg-purple-700]="currentStep >= 1" [class.bg-gray-300]="currentStep < 1"></div>
+      <div class="w-60 h-4 rounded-full" [class.bg-purple-700]="currentStep >= 2" [class.bg-gray-300]="currentStep < 2"></div>
+      <div class="w-60 h-4 rounded-full mx-2" [class.bg-purple-700]="currentStep === 3" [class.bg-gray-300]="currentStep < 3"></div>
+    </div>
+    <ng-container>
+      <h2 class="text-2xl font-semibold mb-4" *ngIf="!showPart2 && !showPart3">Create Store - Personal Information</h2>
+      <h2 class="text-2xl font-semibold mb-4" *ngIf="showPart2 && !showPart3 ">Create Store - Store Information</h2>
+      <h2 class="text-2xl font-semibold mb-4" *ngIf="showPart3">Create Store - Email & Password</h2>
+
+      <form (ngSubmit)="onCreateStore()" #signupForm="ngForm">
+
+        <div *ngIf="!showPart2 && !showPart3">
+          <div class="mb-4">
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name <span class="text-red-500 text-lg">*</span></label>
+            <input type="text" id="firstName" name="firstName" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.user.firstName" required>
+            <div *ngIf="signupForm.controls['firstName']?.invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)" class="text-red-500 text-sm mt-1">First Name is required</div>
+          </div>
+          <div class="mb-4">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name <span class="text-red-500 text-lg">*</span></label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.user.lastName" required>
+            <div *ngIf="signupForm.controls['lastName']?.invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)" class="text-red-500 text-sm mt-1">Last Name is required</div>
+          </div>
+        </div>
+
+        <div *ngIf=" showPart2 && !showPart3">
+          <div class="mb-4">
+            <label for="storeName" class="block text-sm font-medium text-gray-700">Store Name <span class="text-red-500 text-lg">*</span></label>
+            <input type="text" id="storeName" name="storeName" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.name" required>
+            <div *ngIf="signupForm.controls['storeName']?.invalid && (signupForm.controls['storeName'].dirty || signupForm.controls['storeName'].touched)" class="text-red-500 text-sm mt-1">Store Name is required</div>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-500 text-lg">*</span></label>
+            <input type="email" id="storeEmail" name="storeEmail" [(ngModel)]="storeData.email" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please enter a valid email address"
+              #emailInput="ngModel" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+              focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+            <div *ngIf="emailInput.errors?.['required']  && (emailInput.dirty || emailInput.touched)"
+              class="text-red-500 text-sm mt-1">Store E-mail is required</div>
+            <div *ngIf="emailInput.errors?.['pattern'] && !emailInput.errors?.['required']  && (emailInput.dirty || emailInput.touched)"
+              class="text-red-500 text-sm mt-1">Please enter a valid email address</div>
+          </div>
+
+          
+          
+          <div class="mb-4">
+            <label for="storeDescription" class="block text-sm font-medium text-gray-700">Store Description <span class="text-red-500 text-lg">*</span></label>
+            <textarea id="storeDescription" name="storeDescription" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-500 h-20 resize-none" [(ngModel)]="storeData.description" required></textarea>
+            <div *ngIf="signupForm.controls['storeDescription']?.invalid && (signupForm.controls['storeDescription'].dirty || signupForm.controls['storeDescription'].touched)" class="text-red-500 text-sm mt-1">Store Description is required</div>
+         
+          </div>
+          <div class="mb-4">
+            <label for="storeLogo" class="block text-sm font-medium text-gray-700 mb-2">Store Logo <span class="text-red-500 text-lg">*</span></label>
+            <div class="flex items-center justify-center w-full">
+              <label for="dropzone-file" class="flex flex-col items-center justify-center w-full border-2 border-purple-700 border-dashed rounded-lg cursor-pointer bg-purple-100 hover:bg-purple-200">
+                <div  class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <img *ngIf="logoUrl" [src]="logoUrl" alt="Store Logo" class="w-24 h-24 mb-4">
+                  <svg *ngIf="!logoFile" class="w-8 h-8 mb-4 text-purple-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                  </svg>
+                  <p class="mb-2 text-sm text-purple-700"><span class="font-semibold">Click to upload Your Store logo</span> or drag and drop</p>
+                  <p class="text-xs text-purple-700">SVG, PNG, JPG, or GIF (MAX. 400x400px and 1 MB)</p>
+                </div>
+                <div *ngIf="fileSizeErrorMessage || dimensionsErrorMessage" class="bg-red-100 border border-red-400 text-red-500 px-4 py-3 rounded relative" role="alert">
+     
+                  <span class="block sm:inline">{{ fileSizeErrorMessage }} </span>
+                  <span class="block sm:inline">{{ dimensionsErrorMessage }} </span>
+                </div>
+                <input id="dropzone-file" type="file" class="hidden" (change)="onFileChange($event)" accept="image/*" required>
+              </label>
+              <div *ngIf="signupForm.controls['storeLogo']?.invalid && (signupForm.controls['storeLogo'].dirty || signupForm.controls['storeLogo'].touched)" class="text-red-500 text-sm mt-1">Store Logo is required</div>
+            </div>
+           
+          </div>
+          
+          <div class="mb-4">
+            <label for="storeLocation" class="block text-sm font-medium text-gray-700">Store Location <span class="text-red-500 text-lg">*</span></label>
+            <input type="text" id="storeLocation" name="storeLocation" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.location" required>
+            <div *ngIf="signupForm.controls['storeLocation']?.invalid && (signupForm.controls['storeLocation'].dirty || signupForm.controls['storeLocation'].touched)" class="text-red-500 text-sm mt-1">Store Location is required</div>
+          
+          </div>
+          <div class="mb-4">
+            <label for="storeCategory" class="block text-sm font-medium text-gray-700">Store Category <span class="text-red-500 text-lg">*</span></label>
+            <select id="storeCategory" name="storeCategory" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.category" required>
+              <option value="grocery">Grocery</option>
+              <option value="clothing">Clothing</option>
+              <option value="electronics">Electronics</option>
+            </select>
+            <div *ngIf="signupForm.controls['storeCategory']?.invalid && (signupForm.controls['storeCategory'].dirty || signupForm.controls['storeCategory'].touched)" class="text-red-500 text-sm mt-1">Store Category is required</div>
+          
+          </div>
+        </div>
+
+        <div *ngIf="showPart3">
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-500 text-lg">*</span></label>
+            <input type="email" id="email" name="email" [(ngModel)]="storeData.user.email" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please enter a valid email address"
+              #emailInput="ngModel" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none 
+              focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+            <div *ngIf="emailInput.errors?.['required']  && (emailInput.dirty || emailInput.touched)"
+              class="text-red-500 text-sm mt-1">E-mail is required !</div>
+            <div *ngIf="emailInput.errors?.['pattern'] && !emailInput.errors?.['required']  && (emailInput.dirty || emailInput.touched)"
+              class="text-red-500 text-sm mt-1">Please enter a valid email address</div>
+          </div>
+          
+          <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password <span class="text-red-500 text-lg">*</span></label>
+            <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" required>
+            <div *ngIf="signupForm.controls['password']?.invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)" class="text-red-500 text-sm mt-1">Password is required</div>
+          </div>
+          <div class="mb-4">
+            <label for="verifyPassword" class="block text-sm font-medium text-gray-700">Verify Password <span class="text-red-500 text-lg">*</span></label>
+            <input type="password" id="verifyPassword" name="verifyPassword" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50" [(ngModel)]="storeData.user.password" required>
+            <div *ngIf="signupForm.controls['verifyPassword']?.invalid && (signupForm.controls['verifyPassword'].dirty || signupForm.controls['verifyPassword'].touched)" class="text-red-500 text-sm mt-1">Please verify your password</div>
+          </div>
+        </div>
+        <div *ngIf="errorMessage" class="bg-red-100 border border-red-400 text-red-500 px-4 py-3 rounded relative" role="alert">
+     
+          <span class="block sm:inline">{{ errorMessage }}</span>
+        </div>
+        <div class="flex justify-between mt-4">
+          <button type="button" class="btn btn-secondary bg-slate-700 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="prevStep()" *ngIf="showPart2 || showPart3">Back</button>
+          <button type="button" [ngClass]="{
+            'bg-gray-300 cursor-not-allowed': signupForm.invalid || (!isLogoUploadedStep2 && currentStep === 2),
+            'bg-purple-700 hover:bg-purple-900 text-white font-bold': !signupForm.invalid && (isLogoUploadedStep2 || currentStep !== 2)
+          }" class="btn btn-primary bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-auto" (click)="nextStep()" *ngIf="!showPart3" [disabled]="signupForm.invalid || (!isLogoUploadedStep2 && currentStep === 2)">Next</button>
+          <button type="submit" [ngClass]="{
+            'bg-gray-300 cursor-not-allowed': signupForm.invalid,
+            'bg-purple-700 hover:bg-purple-900 text-white font-bold': !signupForm.invalid 
+          }" class="btn btn-primary bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" *ngIf="showPart3" [disabled]="signupForm.invalid">Finish</button>
+        </div>
+        
+      </form>
+
+     
+    </ng-container>
+  </div>
+
+  <div *ngIf="loading" class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="spinner border-t-4 border-gray-500 rounded-full animate-spin h-12 w-12"></div>
+  </div>
+  
+  <app-modal-box-auth [showModal]="showModal" [message]="message" [description]="description" (confirmClicked)="confirm()">
+  </app-modal-box-auth>
+</div>

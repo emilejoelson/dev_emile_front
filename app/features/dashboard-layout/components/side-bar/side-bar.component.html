@@ -1,0 +1,110 @@
+<div class="container">
+    <div [ngClass]="status ? 'active' : ''" class="navigation">
+
+        <ul>
+            <li>
+                <div class="logo-container">
+                    <img src="assets/images/logo/norsifyLogo.png" alt="Logo"
+                        [ngClass]="{'logo': status, 'logo-active': !status}">
+                    <span class="norsify-text">Norsify</span>
+                </div>
+            </li>
+            <li *appHasRole="['USER']">
+                <a routerLink="/dashboard">
+                    <span class="icon">
+                        <i class="fa-solid fa-house"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li *appHasRole="['ADMIN']">
+                <a routerLink="/dashboard/users">
+                    <span class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+                    <span class="title">Customers</span>
+                </a>
+            </li>
+            <li *appHasRole="['ADMIN']">
+                <a routerLink="/dashboard/stores">
+                    <span class="icon">
+                        <i class="fa-solid fa-store"></i>
+                    </span>
+                    <span class="title">Stores</span>
+                </a>
+            </li>
+            <li *appHasRole="['OWNER_SHOP']">
+                <a>
+                    <span class="icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                    <span class="title">New Product</span>
+                </a>
+            </li>
+            <li *appHasRole="['OWNER_SHOP']">
+                <a>
+                    <span class="icon">
+                        <i class="fa-regular fa-star"></i>
+                    </span>
+                    <span class="title">New Copon</span>
+                </a>
+            </li>
+            <li *appHasRole="['OWNER_SHOP']">
+                <a routerLink="/dashboard/categories">
+                    <span class="icon">
+                        <i class="fa-sharp fa-thin fa-icons"></i>
+                    </span>
+                    <span class="title">Categores</span>
+                </a>
+            </li>
+            <li *appHasRole="['OWNER_SHOP']">
+                <a>
+                    <span class="icon">
+
+                        <i class="fa-solid fa-table-list"></i>
+                    </span>
+                    <span class="title">Attributes</span>
+                </a>
+            </li>
+
+            <li *appHasRole="['OWNER_SHOP']">
+                <a>
+                    <span class="icon">
+
+                        <i class="fa-solid fa-comments"></i>
+                    </span>
+                    <span class="title">Reviews</span>
+                </a>
+            </li>
+
+            <li *appHasRole="['OWNER_SHOP']">
+                <a>
+                    <span class="icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </span>
+                    <span class="title">Orders</span>
+                </a>
+            </li>
+            <li *appHasRole="['USER']">
+                <a>
+                    <span class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+
+            <li (click)="signOut()" class="out">
+                <a>
+                    <span class="icon">
+                        <i class="fa-solid fa-right-from-bracket"
+                            style=" transform: rotate(180deg);"></i>
+                    </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
